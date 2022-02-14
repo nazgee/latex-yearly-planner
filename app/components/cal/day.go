@@ -1,6 +1,7 @@
 package cal
 
 import (
+	"github.com/kudrykv/latex-yearly-planner/app/components/simpletranslate"
 	"math"
 	"strconv"
 	"strings"
@@ -52,7 +53,7 @@ func (d Day) Add(days int) Day {
 }
 
 func (d Day) WeekLink() string {
-	return hyper.Link(d.ref(), strconv.Itoa(d.Time.Day())+", "+d.Time.Weekday().String())
+	return hyper.Link(d.ref(), strconv.Itoa(d.Time.Day())+", "+simpletranslate.TranslateDay(d.Time.Weekday()))
 }
 
 func (d Day) Breadcrumb(prefix string, leaf string, shorten bool) string {

@@ -1,6 +1,7 @@
 package cal
 
 import (
+	"github.com/kudrykv/latex-yearly-planner/app/components/simpletranslate"
 	"strconv"
 	"strings"
 	"time"
@@ -53,7 +54,7 @@ func (m *Month) MaybeName(large interface{}) string {
 		return ""
 	}
 
-	return `\multicolumn{8}{c}{` + hyper.Link(m.Month.String(), m.Month.String()) + `} \\ \hline`
+	return `\multicolumn{8}{c}{` + hyper.Link(m.Month.String(), simpletranslate.TranslateMonth(m.Month)) + `} \\ \hline`
 }
 
 func (m *Month) WeekHeader(large interface{}) string {
@@ -64,15 +65,15 @@ func (m *Month) WeekHeader(large interface{}) string {
 	if full {
 		names = append(names, "")
 	} else {
-		names = append(names, "W")
+		names = append(names, simpletranslate.Translate("W"))
 	}
 
 	for i := time.Sunday; i < 7; i++ {
 		name := ((m.Weekday + i) % 7).String()
 		if full {
-			name = `\hfil{}` + name
+			name = `\hfil{}` + simpletranslate.Translate(name)
 		} else {
-			name = name[:1]
+			name = string([]rune(simpletranslate.Translate(name))[:1])
 		}
 
 		names = append(names, name)

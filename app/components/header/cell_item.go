@@ -1,5 +1,7 @@
 package header
 
+import "log"
+
 type CellItem struct {
 	Text     string
 	Ref      string
@@ -30,7 +32,9 @@ func (c CellItem) Refer(ref string) CellItem {
 
 func (c CellItem) Display() string {
 	if len(c.Ref) == 0 {
+		// FIXME this can break stuff when translate is used
 		c.Ref = c.Text
+		log.Fatal("this should not happen")
 	}
 
 	link := `\hyperlink{` + c.Ref + `}{` + c.Text + `}`

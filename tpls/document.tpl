@@ -1,5 +1,6 @@
 \documentclass[9pt]{extarticle}
 
+\usepackage[T1]{fontenc}
 \usepackage{geometry}
 \usepackage[table]{xcolor}
 {{if $.Cfg.Debug.ShowFrame}}\usepackage{showframe}{{end}}

@@ -1,40 +1,10 @@
 package header
 
 import (
-	"time"
-
 	"github.com/kudrykv/latex-yearly-planner/app/components/hyper"
+	"github.com/kudrykv/latex-yearly-planner/app/components/simpletranslate"
+	"time"
 )
-
-var month2pl = map[string]string {
-	"January":"Styczeń",
-	"February":"Luty",
-	"March":"Marzec",
-	"April":"Kwiecień",
-	"May":"Maj",
-	"June":"Czerwiec",
-	"July":"Lipiec",
-	"August":"Sierpień",
-	"September":"Wrzesień",
-	"October":"Październik",
-	"November":"Listopad",
-	"December":"Grudzień",
-}
-
-var monthspl = [...]string{
-        "Styczeń",
-        "Luty",
-        "Marzec",
-        "Kwiecień",
-        "Maj",
-        "Czerwiec",
-        "Lipiec",
-        "Sierpień",
-        "Wrzesień",
-        "Październik",
-        "Listopad",
-        "Grudzień",
-}
 
 type MonthItem struct {
 	Val     time.Month
@@ -43,14 +13,11 @@ type MonthItem struct {
 }
 
 func (m MonthItem) Display() string {
-	//ref := month2pl[m.Val.String()]
 	ref := m.Val.String()
-	text := month2pl[m.Val.String()]
-	//text := ref
+	text := simpletranslate.TranslateMonth(m.Val)
 
 	if m.shorten {
-		chars := []rune(text)
-		text = string(chars[:3])
+		text = simpletranslate.TranslateMonthShort(m.Val)
 	}
 
 	if m.ref {
