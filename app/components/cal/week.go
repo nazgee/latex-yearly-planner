@@ -1,6 +1,7 @@
 package cal
 
 import (
+	"github.com/kudrykv/latex-yearly-planner/app/components/simpletranslate"
 	"math"
 	"strconv"
 	"strings"
@@ -129,7 +130,7 @@ func (w *Week) WeekNumber(large interface{}) string {
 		return hyper.Link(ref, itoa)
 	}
 
-	text := `\rotatebox[origin=tr]{90}{\makebox[\myLenMonthlyCellHeight][c]{Week ` + itoa + `}}`
+	text := `\rotatebox[origin=tr]{90}{\makebox[\myLenMonthlyCellHeight][c]{` + simpletranslate.Translate("Week") + ` ` + itoa + `}}`
 
 	return hyper.Link(ref, text)
 }
