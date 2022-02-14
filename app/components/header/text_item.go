@@ -1,6 +1,9 @@
 package header
 
-import "github.com/kudrykv/latex-yearly-planner/app/components/hyper"
+import (
+	"github.com/kudrykv/latex-yearly-planner/app/components/hyper"
+	"log"
+)
 
 type TextItem struct {
 	Name      string
@@ -31,6 +34,8 @@ func (t TextItem) Display() string {
 		ref = t.refText
 	} else {
 		ref = t.refPrefix + t.Name
+		// TODO this would break when translation is used
+		log.Panic("text used as a ref, would cause translation issues")
 	}
 
 	if t.ref {

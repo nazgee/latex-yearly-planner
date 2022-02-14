@@ -32,9 +32,9 @@ func (c CellItem) Refer(ref string) CellItem {
 
 func (c CellItem) Display() string {
 	if len(c.Ref) == 0 {
-		// FIXME this can break stuff when translate is used
 		c.Ref = c.Text
-		log.Fatal("this should not happen")
+		// TODO this would break when translation is used
+		log.Panic("text used as a ref, would cause translation issues")
 	}
 
 	link := `\hyperlink{` + c.Ref + `}{` + c.Text + `}`
