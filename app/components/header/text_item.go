@@ -3,6 +3,9 @@ package header
 import (
 	"github.com/kudrykv/latex-yearly-planner/app/components/hyper"
 	"log"
+	"runtime/debug"
+	"strconv"
+	"unicode/utf8"
 )
 
 type TextItem struct {
@@ -35,7 +38,8 @@ func (t TextItem) Display() string {
 	} else {
 		ref = t.refPrefix + t.Name
 		// TODO this would break when translation is used
-		log.Panic("text used as a ref, would cause translation issues")
+		debug.PrintStack()
+		log.Panic("text used as a ref, would cause translation issues, refPrefix=" + t.refPrefix + " (len=" + strconv.FormatInt(int64(utf8.RuneCountInString(t.refPrefix)), 10) + ") name=" + t.Name)
 	}
 
 	if t.ref {

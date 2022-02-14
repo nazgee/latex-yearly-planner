@@ -1,6 +1,7 @@
 package note
 
 import (
+	"github.com/kudrykv/latex-yearly-planner/app/components/simpletranslate"
 	"strconv"
 
 	"github.com/kudrykv/latex-yearly-planner/app/components/header"
@@ -41,11 +42,11 @@ func (i Index) PrevNext(currIdx int) header.Items {
 			postfix = ""
 		}
 
-		list = append(list, header.NewTextItem("Notes Index"+postfix))
+		list = append(list, header.NewTextItem(simpletranslate.Translate("Notes Index")+postfix).RefText("Notes Index"+postfix))
 	}
 
 	if currIdx+1 < len(i.Pages) {
-		list = append(list, header.NewTextItem("Notes Index "+strconv.Itoa(currIdx+2)))
+		list = append(list, header.NewTextItem(simpletranslate.Translate("Notes Index")+" "+strconv.Itoa(currIdx+2)).RefText("Notes Index "+strconv.Itoa(currIdx+2)))
 	}
 
 	return list

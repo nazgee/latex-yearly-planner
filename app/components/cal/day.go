@@ -68,12 +68,13 @@ func (d Day) Breadcrumb(prefix string, leaf string, shorten bool) string {
 		dayLayout = "Mon, 2"
 	}
 
-	dayItem := header.NewTextItem(d.Time.Format(dayLayout)).RefText(d.Time.Format(time.RFC3339))
+	dayItem := header.NewTextItem(simpletranslate.TranslatePrefix(d.Time.Format(dayLayout))).RefText(d.Time.Format(time.RFC3339))
+	quarterRef := "Q" + strconv.Itoa(int(math.Ceil(float64(d.Time.Month())/3.)))
 	items := header.Items{
 		header.NewIntItem(d.Time.Year()),
-		header.NewTextItem("Q" + strconv.Itoa(int(math.Ceil(float64(d.Time.Month())/3.)))),
+		header.NewTextItem(quarterRef).RefText(quarterRef),
 		header.NewMonthItem(d.Time.Month()).Shorten(shorten),
-		header.NewTextItem("Week " + strconv.Itoa(wn)).RefPrefix(wpref),
+		header.NewTextItem(simpletranslate.Translate("Week") + " " + strconv.Itoa(wn)).RefText("Week " + strconv.Itoa(wn)).RefPrefix(wpref),
 	}
 
 	if len(leaf) > 0 {
@@ -94,12 +95,12 @@ func (d Day) PrevNext(prefix string) header.Items {
 
 	if d.PrevExists() {
 		prev := d.Prev()
-		items = append(items, header.NewTextItem(prev.Time.Format("Mon, 2")).RefText(prefix+prev.ref()))
+		items = append(items, header.NewTextItem(simpletranslate.TranslatePrefix(prev.Time.Format("Mon, 2"))).RefText(prefix+prev.ref()))
 	}
 
 	if d.NextExists() {
 		next := d.Next()
-		items = append(items, header.NewTextItem(next.Time.Format("Mon, 2")).RefText(prefix+next.ref()))
+		items = append(items, header.NewTextItem(simpletranslate.TranslatePrefix(next.Time.Format("Mon, 2"))).RefText(prefix+next.ref()))
 	}
 
 	return items

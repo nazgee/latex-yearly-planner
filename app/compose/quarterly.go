@@ -4,6 +4,7 @@ import (
 	"github.com/kudrykv/latex-yearly-planner/app/components/cal"
 	"github.com/kudrykv/latex-yearly-planner/app/components/header"
 	"github.com/kudrykv/latex-yearly-planner/app/components/page"
+	"github.com/kudrykv/latex-yearly-planner/app/components/simpletranslate"
 	"github.com/kudrykv/latex-yearly-planner/app/config"
 )
 
@@ -12,7 +13,7 @@ func Quarterly(cfg config.Config, tpls []string) (page.Modules, error) {
 	year := cal.NewYear(cfg.WeekStart, cfg.Year)
 
 	hRight := header.Items{
-		header.NewTextItem("Notes").RefText("Notes Index"),
+		header.NewTextItem(simpletranslate.Translate("Notebook")).RefText("Notes Index"),
 	}
 
 	for _, quarter := range year.Quarters {

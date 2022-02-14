@@ -4,6 +4,8 @@ set -eo pipefail
 
 go run cmd/plannergen/plannergen.go --config "${CFG}"
 
+#exit 1
+
 nakedname=$(echo "${CFG}" | rev | cut -d, -f1 | cut -d'/' -f 1 | cut -d'.' -f 2-99 | rev)
 
 _passes=(1)

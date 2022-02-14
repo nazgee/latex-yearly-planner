@@ -2,6 +2,7 @@ package note
 
 import (
 	"fmt"
+	"github.com/kudrykv/latex-yearly-planner/app/components/simpletranslate"
 	"strconv"
 
 	"github.com/kudrykv/latex-yearly-planner/app/components/header"
@@ -28,7 +29,7 @@ func (p Notes) Breadcrumb(year, idx int) string {
 
 	return header.Items{
 		header.NewIntItem(year),
-		header.NewTextItem("Notes Index" + postfix).Ref(true),
+		header.NewTextItem(simpletranslate.Translate("Notes Index") + postfix).RefText("Notes Index" + postfix).Ref(true),
 	}.Table(true)
 }
 
@@ -71,8 +72,8 @@ func (n Note) Breadcrumb() string {
 
 	return header.Items{
 		header.NewIntItem(n.Year),
-		header.NewTextItem("Notes Index" + page),
-		header.NewTextItem(n.ref()).Ref(true),
+		header.NewTextItem(simpletranslate.Translate("Notes Index") + page).RefText("Notes Index" + page),
+		header.NewTextItem(n.ref()).RefText(n.ref()).Ref(true),
 	}.Table(true)
 }
 
@@ -80,11 +81,11 @@ func (n Note) PrevNext(notes int) header.Items {
 	items := header.Items{}
 
 	if n.Number > 1 {
-		items = append(items, header.NewTextItem("Note "+strconv.Itoa(n.Number-1)))
+		items = append(items, header.NewTextItem(simpletranslate.Translate("Note")+" "+strconv.Itoa(n.Number-1)).RefText("\"Note \"+strconv.Itoa(n.Number-1)"))
 	}
 
 	if n.Number < notes {
-		items = append(items, header.NewTextItem("Note "+strconv.Itoa(n.Number+1)))
+		items = append(items, header.NewTextItem(simpletranslate.Translate("Note")+" "+strconv.Itoa(n.Number+1)).RefText("Note "+strconv.Itoa(n.Number+1)))
 	}
 
 	return items

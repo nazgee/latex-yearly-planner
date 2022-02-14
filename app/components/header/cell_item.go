@@ -1,6 +1,9 @@
 package header
 
-import "log"
+import (
+	"log"
+	"runtime/debug"
+)
 
 type CellItem struct {
 	Text     string
@@ -34,7 +37,8 @@ func (c CellItem) Display() string {
 	if len(c.Ref) == 0 {
 		c.Ref = c.Text
 		// TODO this would break when translation is used
-		log.Panic("text used as a ref, would cause translation issues")
+		debug.PrintStack()
+		log.Panic("text used as a ref, would cause translation issues, c.Text=" + c.Text)
 	}
 
 	link := `\hyperlink{` + c.Ref + `}{` + c.Text + `}`

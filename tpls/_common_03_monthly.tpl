@@ -2,18 +2,18 @@
 \medskip
 
 {{ if $.Cfg.Dotted -}}
-\myUnderline{Notes}
+\myUnderline{Notatki}
 \vbox to 0pt{\myMash[\myMonthlySpring]{20}{\myNumDotWidthFull}}
 {{- else -}}
 \parbox{\myLenTwoCol}{
-  \myUnderline{Notes}
+  \myUnderline{Notatki}
   \vbox to \dimexpr\textheight-\pagetotal-\myLenLineHeightButLine\relax {%
     \leaders\hbox to \linewidth{\textcolor{\myColorGray}{\rule{0pt}{\myLenLineHeightButLine}\hrulefill}}\vfil
   }%
 }%
 \hspace{\myLenTwoColSep}%
 \parbox{\myLenTwoCol}{
-  \myUnderline{Notes}
+  \myUnderline{Więcej notatek}
   \vbox to \dimexpr\textheight-\pagetotal-\myLenLineHeightButLine\relax {%
     \leaders\hbox to \linewidth{\textcolor{\myColorGray}{\rule{0pt}{\myLenLineHeightButLine}\hrulefill}}\vfil
   }%

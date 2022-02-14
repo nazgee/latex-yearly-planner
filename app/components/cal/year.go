@@ -30,10 +30,10 @@ func (y Year) Breadcrumb() string {
 	return header.Items{
 		header.NewIntItem(y.Number).Ref(),
 		header.NewItemsGroup(
-			header.NewTextItem("Q1"),
-			header.NewTextItem("Q2"),
-			header.NewTextItem("Q3"),
-			header.NewTextItem("Q4"),
+			header.NewTextItem("Q1").RefText("Q1"),
+			header.NewTextItem("Q2").RefText("Q2"),
+			header.NewTextItem("Q3").RefText("Q3"),
+			header.NewTextItem("Q4").RefText("Q4"),
 		),
 	}.Table(true)
 }

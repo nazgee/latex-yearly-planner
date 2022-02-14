@@ -152,7 +152,7 @@ func (w *Week) Breadcrumb() string {
 		header.NewIntItem(w.Year.Number),
 		w.QuartersBreadcrumb(),
 		w.MonthsBreadcrumb(),
-		header.NewTextItem("Week " + strconv.Itoa(w.weekNumber())).RefText(w.ref()).Ref(true),
+		header.NewTextItem(simpletranslate.Translate("Week") + " " + strconv.Itoa(w.weekNumber())).RefText(w.ref()).Ref(true),
 	}.Table(true)
 }
 
@@ -189,12 +189,12 @@ func (w *Week) PrevNext() header.Items {
 
 	if w.PrevExists() {
 		wn := w.Prev().weekNumber()
-		items = append(items, header.NewTextItem("Week "+strconv.Itoa(wn)))
+		items = append(items, header.NewTextItem(simpletranslate.Translate("Week")+" "+strconv.Itoa(wn)).RefText("Week "+strconv.Itoa(wn)))
 	}
 
 	if w.NextExists() {
 		wn := w.Next().weekNumber()
-		items = append(items, header.NewTextItem("Week "+strconv.Itoa(wn)))
+		items = append(items, header.NewTextItem(simpletranslate.Translate("Week")+" "+strconv.Itoa(wn)).RefText("Week "+strconv.Itoa(wn)))
 	}
 
 	return items
@@ -224,7 +224,7 @@ func (w *Week) QuartersBreadcrumb() header.ItemsGroup {
 	group := header.ItemsGroup{}.Delim(" / ")
 
 	for _, quarter := range w.Quarters {
-		group.Items = append(group.Items, header.NewTextItem("Q"+strconv.Itoa(quarter.Number)))
+		group.Items = append(group.Items, header.NewTextItem("Q"+strconv.Itoa(quarter.Number)).RefText("Q"+strconv.Itoa(quarter.Number)))
 	}
 
 	return group
@@ -296,7 +296,7 @@ func (w *Week) HeadingMOS() string {
 }
 
 func (w *Week) Name() string {
-	return "Week " + strconv.Itoa(w.weekNumber())
+	return simpletranslate.Translate("Week") + " " + strconv.Itoa(w.weekNumber())
 }
 
 func (w *Week) Target() string {
