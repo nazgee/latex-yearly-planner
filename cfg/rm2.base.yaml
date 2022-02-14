@@ -10,9 +10,9 @@ layout:
     marginparsep: 4.5mm
 
     margin:
-      top: .3cm
-      bottom: 0.6cm
-      left: 1.4cm
+      top: 0.3cm
+      bottom: 0.3cm
+      left: 0.8cm
       right: 0.3cm
 
   numbers:

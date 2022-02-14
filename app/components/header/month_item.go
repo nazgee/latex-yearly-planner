@@ -6,6 +6,36 @@ import (
 	"github.com/kudrykv/latex-yearly-planner/app/components/hyper"
 )
 
+var month2pl = map[string]string {
+	"January":"Styczeń",
+	"February":"Luty",
+	"March":"Marzec",
+	"April":"Kwiecień",
+	"May":"Maj",
+	"June":"Czerwiec",
+	"July":"Lipiec",
+	"August":"Sierpień",
+	"September":"Wrzesień",
+	"October":"Październik",
+	"November":"Listopad",
+	"December":"Grudzień",
+}
+
+var monthspl = [...]string{
+        "Styczeń",
+        "Luty",
+        "Marzec",
+        "Kwiecień",
+        "Maj",
+        "Czerwiec",
+        "Lipiec",
+        "Sierpień",
+        "Wrzesień",
+        "Październik",
+        "Listopad",
+        "Grudzień",
+}
+
 type MonthItem struct {
 	Val     time.Month
 	ref     bool
@@ -13,11 +43,14 @@ type MonthItem struct {
 }
 
 func (m MonthItem) Display() string {
+	//ref := month2pl[m.Val.String()]
 	ref := m.Val.String()
-	text := ref
+	text := month2pl[m.Val.String()]
+	//text := ref
 
 	if m.shorten {
-		text = text[:3]
+		chars := []rune(text)
+		text = string(chars[:3])
 	}
 
 	if m.ref {
