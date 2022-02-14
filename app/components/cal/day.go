@@ -94,12 +94,12 @@ func (d Day) PrevNext(prefix string) header.Items {
 
 	if d.PrevExists() {
 		prev := d.Prev()
-		items = append(items, header.NewTextItem(prev.Time.Format("Mon, 2")).RefText(prefix+prev.ref()))
+		items = append(items, header.NewTextItem(simpletranslate.TranslatePrefix(prev.Time.Format("Mon, 2"))).RefText(prefix+prev.ref()))
 	}
 
 	if d.NextExists() {
 		next := d.Next()
-		items = append(items, header.NewTextItem(next.Time.Format("Mon, 2")).RefText(prefix+next.ref()))
+		items = append(items, header.NewTextItem(simpletranslate.TranslatePrefix(next.Time.Format("Mon, 2"))).RefText(prefix+next.ref()))
 	}
 
 	return items
