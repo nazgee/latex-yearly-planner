@@ -8,31 +8,31 @@
 {{- $day7 := index $days 6 -}}
 
 \parbox{\myLenTriCol}{%
-  \userActionsUnderline{ {{- $day1.WeekLink -}} }{\userActions}{0.55\myLenTriCol}{0.45\myLenTriCol}\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
+  \myUnderline{ {{- $day1.WeekLink -}} }\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
 }%
 \hspace{\myLenTriColSep}%
 \parbox{\myLenTriCol}{%
-  \userActionsUnderline{ {{- $day2.WeekLink -}} }{\userActions}{0.55\myLenTriCol}{0.45\myLenTriCol}\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
+  \myUnderline{ {{- $day2.WeekLink -}} }\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
 }%
 \hspace{\myLenTriColSep}%
 \parbox{\myLenTriCol}{%
-  \userActionsUnderline{ {{- $day3.WeekLink -}} }{\userActions}{0.55\myLenTriCol}{0.45\myLenTriCol}\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
+  \myUnderline{ {{- $day3.WeekLink -}} }\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
 }
 \vfill
 \parbox{\myLenTriCol}{%
-  \userActionsUnderline{ {{- $day4.WeekLink -}} }{\userActions}{0.55\myLenTriCol}{0.45\myLenTriCol}\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
+  \myUnderline{ {{- $day4.WeekLink -}} }\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
 }%
 \hspace{\myLenTriColSep}%
 \parbox{\myLenTriCol}{%
-  \userActionsUnderline{ {{- $day5.WeekLink -}} }{\userActions}{0.55\myLenTriCol}{0.45\myLenTriCol}\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
+  \myUnderline{ {{- $day5.WeekLink -}} }\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
 }%
 \hspace{\myLenTriColSep}%
 \parbox{\myLenTriCol}{%
-  \userActionsUnderline{ {{- $day6.WeekLink -}} }{\userActions}{0.55\myLenTriCol}{0.45\myLenTriCol}\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
+  \myUnderline{ {{- $day6.WeekLink -}} }\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
 }
 \vfill
 \parbox{\myLenTriCol}{%
-  \userActionsUnderline{ {{- $day7.WeekLink -}} }{\userActions}{0.55\myLenTriCol}{0.45\myLenTriCol}\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
+  \myUnderline{ {{- $day7.WeekLink -}} }\Repeat{\myNumWeeklyLines}{\myLineGrayVskipTop}%
 }%
 \hspace{\myLenTriColSep}%
 \parbox{\dimexpr2\myLenTriCol+\myLenTriColSep}{%

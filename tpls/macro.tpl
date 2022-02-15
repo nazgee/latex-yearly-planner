@@ -89,9 +89,3 @@
   \dimexpr\pagegoal-\pagetotal-\lineskip-9.4pt\relax
   \fi%
 }
-
-\newcommand{\userActions}{$\Delta$\:\:$K$\:\:$\beta$}
-\newcommand{\userActionsHeader}{$\Delta$&$K$&$\beta$}
-\newcommand{\userActionsTable}{\begin{tabular}{c|c|c}\userActionsHeader \\ \:&\:&\: \end{tabular}}
-\newcommand{\userActionsUnderline}[4]{\myUnderline{\begin{minipage}{#3}#1\end{minipage}\begin{minipage}{#4}\begin{flushright}#2\end{flushright}\end{minipage}}}
-
