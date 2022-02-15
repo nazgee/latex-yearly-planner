@@ -27,11 +27,13 @@ func (m Months) Months() []time.Month {
 }
 
 type Month struct {
-	Year    *Year
-	Quarter *Quarter
-	Month   time.Month
-	Weekday time.Weekday
-	Weeks   Weeks
+	Year         *Year
+	Quarter      *Quarter
+	Month        time.Month
+	Weekday      time.Weekday
+	Weeks        Weeks
+	ActionsLeft  Actions
+	ActionsRight Actions
 }
 
 func NewMonth(wd time.Weekday, year *Year, qrtr *Quarter, month time.Month) *Month {
@@ -43,6 +45,24 @@ func NewMonth(wd time.Weekday, year *Year, qrtr *Quarter, month time.Month) *Mon
 	}
 
 	m.Weeks = NewWeeksForMonth(wd, year, qrtr, m)
+
+	// set the starting date (in any way you wish)
+	firstDay := time.Date(year.Number, month, 1, 0, 0, 0, 0, time.Local)
+
+	actionsLeft := Actions{}
+	actionsRight := Actions{}
+	// set d to starting date and keep adding 1 day to it as long as month doesn't change
+	for d := firstDay; d.Month() == month; d = d.AddDate(0, 0, 1) {
+		a := &Action{d}
+		if d.Day() <= 16 {
+			actionsLeft = append(actionsLeft, a)
+		} else {
+			actionsRight = append(actionsRight, a)
+		}
+	}
+
+	m.ActionsLeft = actionsLeft
+	m.ActionsRight = actionsRight
 
 	return m
 }

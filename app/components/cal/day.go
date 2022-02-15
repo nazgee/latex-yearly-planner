@@ -26,12 +26,12 @@ func (d Day) Day(today, large interface{}) string {
 	day := strconv.Itoa(d.Time.Day())
 
 	if larg, _ := large.(bool); larg {
-		withActions := `\hyperlink{` + d.ref() + `}{\begin{tabular}{@{}p{5mm}@{}|}\hfil{}` + day + `\\ \hline\end{tabular}} \userActions`
+		withActions := `\hyperlink{` + d.ref() + `}{\begin{tabular}{@{}p{5mm}@{}|}\hfil{}` + day + `\\ \hline\end{tabular}}`
 		switch d.Time.Day() {
 		case 1:
-			withActions += `\linebreak \vfil \: $\circ$ faktura`
+			withActions += `\linebreak\:$\circ$ faktura`
 		case 20:
-			withActions += `\linebreak \vfil \: $\circ$ podatki`
+			withActions += `\linebreak\:$\circ$ podatki`
 		}
 		return withActions
 	}
